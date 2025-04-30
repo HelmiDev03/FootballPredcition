@@ -76,7 +76,7 @@ football_predictions_app/
 1.  **Keystore:**
     *   A keystore file (`upload-keystore.jks`) is included in the project root.
     *   The passwords and alias used are configured in `android/key.properties`.
-    *   **Important:** For production use, you should generate your own secure keystore and update `android/key.properties` and `android/app/build.gradle` accordingly. The included keystore uses placeholder details and the password "helmi2003".
+  
 
 2.  **Build Command:**
     *   Run `flutter build apk --release`.
