@@ -1,3 +1,4 @@
+// This section defines the repositories from which Gradle will fetch dependencies
 allprojects {
     repositories {
         google()
@@ -6,13 +7,30 @@ allprojects {
 }
 
 rootProject.buildDir = "../build"
+
+// This ensures that the subprojects are all built inside the root build directory
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
+// Dependencies between projects within the root project
 subprojects {
     project.evaluationDependsOn(":app")
 }
 
+// Register a clean task to delete the build directory
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+
+// Define the buildscript section for Android Gradle Plugin
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Ensure you use the correct AGP version here (8.1.0 or higher if you are using compileSdkVersion 35)
+        classpath 'com.android.tools.build:gradle:8.1.0'  // Update this line
+    }
 }
